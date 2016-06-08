@@ -1,0 +1,61 @@
+\section{Discusión}
+
+\subsection{Modificación de los pedidos}
+
+Decidimos que tanto clientes como locales no puedan quitar productos de su pedido originales al momento de modificarlos.
+
+En el caso de los pedidos de los clientes, lo que motivo esta decisión fue el hecho de que, si el cliente selecciono pagar su pedido original de forma online con tarjeta o Paypal, entonces todos los productos de dicho pedido ya fueron comprados. Entonces, si permitiéramos que el cliente quite productos de su pedido, podría darse el caso en que el cliente modificara su pedido de forma tal que el nuevo pedido tenga un importe menor que el abonado originalmente. En dicho caso tendríamos dos formas posibles de actuar:
+
+\begin{itemize}
+	\item Reembolsar al cliente la diferencia.
+	\item Quedarnos con la diferencia de dinero.
+\end{itemize}
+
+La primer opción nos parece un tanto ilógica e incomoda desde un punto de vista comercial y la segunda opción nos parece deshonesta.
+
+A pesar de contar con estas dos opciones, nosotros consideramos que el hecho de que el cliente realice un pedido establece un \textbf{contrato o compromiso} entre las dos partes \textit{(el cliente y Mes\%)}, en el cual el cliente se compromete a pagar los productos y la cadena Mes\% garantiza tener en stock los productos pedidos y entregarlos en tiempo y forma. Por ende, no permitimos que los clientes quiten productos de sus pedidos.
+
+Agregar productos al pedido no implica ninguna modificación al \textit{contrato} previo, solo es un nuevo contrato al cual Mes\% se compromete a entregar en la misma fecha que el anterior.
+
+Por otra parte, tampoco permitimos que los locales quiten productos de su pedido y esto es debido a como funciona el sistema de alarmas \textit{(avisos por mail)} de falta de stock de los producto. \textbf{Este mismo motivo también aplica a los pedidos de los clientes}.
+
+Supongamos el siguiente escenario: Un pedido de un local causa que el stock de el producto X caiga por debajo del umbral configurado. Esto causara que se active la alarma asociada a dicho producto y que se envíe un mail al encargado de stock del deposito. Al recibir la notificación el encargado de stock realiza un pedido al proveedor para reponer las unidades del producto en falta. Supongamos ahora que el local es capaz de quitar productos de su pedido y decide quitar \textbf{todas} las unidades que solicito del producto X, causando así que el stock disponible en el deposito supere al umbral. Ahora, tenemos dos escenarios posibles:
+\begin{itemize}
+	\item Los nuevos pedidos que arriban al sistema causan que el stock del producto X vuelva a caer por debajo del umbral, enviándose un nuevo aviso al encargado de stock del deposito. Esto causaría que el sistema de alarmas se vuelva confuso para el encargado del stock, ya que podría darse el caso en que el stock del producto este cruzando de un lado al otro del umbral constantemente \textit{(por modificaciones en los pedidos)} y que el encargado reciba una cantidad absurda de notificaciones.
+	\item No se reciben nuevos pedidos solicitando al producto X. Luego, arriba el pedido hecho al proveedor y ahora se tiene una cantidad muy grande de unidades del producto X que bien podrían: no venderse, producir problemas de espacio en el deposito, echarse a perder \textit{(si es que es algo perecedero)}, etc.
+\end{itemize}
+
+Ninguno de los dos escenarios nos parece tolerable, de modo que este motivo nos llevo a no permitir que los locales quiten productos de sus pedidos y es un motivo mas para que los clientes no puedan hacerlo.
+ 
+\subsection{Rechazo de los pedidos}
+
+Si el sistema no cuenta con el stock suficiente \textit{(definido como stock real menos stock reservado)} para satisfacer el pedido de un cliente en su totalidad, entonces se rechazara su pedido.
+
+Esto se desprende directamente del enunciado, el cual nos indica que: ``No podemos tener problemas de stock cuando un pedido se realiza de forma online''.
+
+Esto nos causa un pequeño inconveniente, el cual es: El usuario ve el stock disponible con el que cuenta el deposito al momento de \textbf{iniciar} su pedido, pero este valor puede diferir \textit{(haber disminuido)} al momento en que el usuario quiere confirmar su pedido, causando que el sistema se lo rechace y que el usuario haya perdido tiempo de su vida.
+
+Creemos que este inconveniente no es muy grave y, si el deposito cuenta con cantidades de stock lo suficientemente grandes \textit{(y umbrales bien configurados)} como para que el pedido de un usuario no represente una diferencia para el resto de los usuarios comprando, entonces este escenario no sucederá frecuentemente.
+
+\subsection{Pedidos no entregados}
+
+Si al enviar un pedido a un cliente este no se encuentra en su domicilio, entonces se informa que el pedido no pudo ser entregado y los productos vuelven al deposito.
+Ahora, existe la posibilidad de que el cliente haya pagado online el pedido antes de recibirlo, en cuyo caso tenemos tres formas de actuar:
+\begin{itemize}
+	\item Devolverle al cliente su dinero.
+	\item Quedarnos con el dinero del cliente y con los productos del pedido.
+	\item Quedarnos con el dinero del cliente y hacer que este vaya al deposito a buscar su pedido.
+\end{itemize}
+
+Nosotros optamos por la segunda opción, ya que es la mas conveniente para Mes\%. Pero, puede que esto no sea legal en algunos lugares, en cuyo caso creemos que se debería optar por la tercer opción, ya que es la que menos gastos y molestias le ocasionarían a Mes\%. En caso de elegir esta opción, seria necesario agregar una interacción entre el cliente y el encargado del deposito donde este le solicita su pedido y el encargado se lo entrega. Además de que se debería tener en mente el problema de espacio que esto podría ocasionar y de que forma el encargado de stock del deposito sabe que pedido corresponde a que cliente. También seria necesario agregar un caso de uso en donde, luego de entregarle el pedido al cliente, el encargado de stock del deposito lo marque como ``Pedido entregado''.
+
+La primer opción queda descartada por lo ya dicho en la sección ``Modificación de los pedidos'', sobre que los pedidos son \textbf{contratos}. Además, desde un punto de vista comercial, seria realmente contraproducente devolver el dinero del pedido y además haber perdido dinero en el envió fallido del mismo.
+
+
+\subsection{Fechas de entrega de los pedidos}
+
+El sistema propone a los usuarios tres fechas al azar, en días hábiles, dentro de los siete días siguientes a la fecha en que se realizo el pedido.
+
+Esto podría ocasionar que muchos pedidos se agenden para un mismo día pero, dado que la logística de la entrega de los pedidos no corre por nuestra cuenta y que no se nos impuso ninguna restricción sobre la cantidad de pedidos que se pueden entregar por día, asumimos que esto no ocasiona un problema y que los pedidos van a poder ser entregados.
+
+En caso de que esto ocasionara un problema, podría resolverse fácilmente estableciendo un limite a la cantidad de pedidos \textit{(valor que desconocemos)} agendados por día y rechazando los pedidos de los usuarios si, a partir de la fecha actual, sucede que los próximos siete días alcanzaron su tope de pedidos para entregar.

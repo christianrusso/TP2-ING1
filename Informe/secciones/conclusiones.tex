@@ -1,0 +1,19 @@
+\section{Conclusiones}
+
+Este trabajo no resulto nada sencillo ya que implicaba realizar muchos diagramas, los cuales estaban estrechamente relacionados, y debían ser consistentes entre si y con lo realizado en el trabajo anterior.
+
+Desde nuestro punto de vista, el diagrama de \textbf{casos de uso} debería haberse realizado en el primer trabajo conjuntamente con los diagramas de contexto, ya que estos tienen una muy fuerte relación y permiten detectar fácilmente errores o inconsistencias entre si. 
+
+También creemos que el escribir los detalles de cada operación de los casos de uso ayuda enormemente a determinar el alcance del sistema, las cosas que necesitamos especificar, cómo se realizan y las cosas que podemos delegar a terceros, etc; y todo esto habría ayudado a la hora de diseñar el diagrama de objetivos, ya que mientras se escribe el detalle de una operación se piensa en diferentes formas de llevarla a cabo \textit{(posibles o-refinamientos)}.
+
+El diagrama de clases nos ayudo mucho a comprender con que información iba a trabajar nuestro sistema, que información necesitábamos guardar y cual debíamos mantener actualizada.
+
+Las máquinas de estado fueron un verdadero \sout{dolor de cabeza} reto, ya que realizar la sincronización de los pedidos de los usuarios de forma que todos puedan realizar pedidos sin importar el estado de los otros usuarios fue, como minino, muy complicado. A esto, además, se suma el hecho de que la maquina debía reflejar como el sistema mantenía actualizado el stock disponible y stock reservado del deposito en el que se hacia el pedido y el manejo de las alarmas una vez que el stock disponible caía por debajo de cierto umbral. Todo el proceso de desarrollar la FSM nos permitió notar algunas falencias en los detalles de algunos casos de uso \textit{(en el que el cliente realiza el pedido)}.
+
+Los diagramas de actividad no aportaron mucho al entendimiento general del problema ni a detectar algún error. Además fueron los primeros diagramas en estar terminados y, por mucha diferencia, los que mas rápido se hicieron.
+
+Finalmente, todo este proceso de muchas, muchas y muchas horas nos llevo a entender la dificultad de encarar un proyecto símil a un proyecto real \textit{(aunque claramente acotado)} y de la gran cantidad de decisiones que se deben tomar durante la etapa de diseño.
+
+Creemos que seria sumamente útil contar con un software que se encargara de validar los diferentes diagramas \textit{(al menos hasta cierto punto)}, chequear inconsistencias entre estos y/o sugerir cambios.
+
+Como nota final, creemos que el tener que atar nuestra solución al diagrama de objetivos realizado en el primer trabajo nos limito en este trabajo a la hora de tomar decisiones, ya que al momento de realizar el diagrama de objetivos hubo muchas situaciones \textit{(como el hecho de que no entregar un pedido ni devolver el dinero fuera ilegal o como asignar las fechas de entrega a los pedidos)} que no tuvimos en cuenta.

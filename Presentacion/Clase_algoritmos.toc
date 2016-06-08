@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Dificultades encontradas}{3}{0}{1}
+\beamer@sectionintoc {2}{Puntos fuertes del TP}{4}{0}{2}
+\beamer@sectionintoc {3}{Puntos cuestionables del TP}{5}{0}{3}
+\beamer@sectionintoc {4}{Decisiones tomadas}{6}{0}{4}

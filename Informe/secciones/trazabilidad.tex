@@ -1,0 +1,74 @@
+\subsection{Trazabilidad}
+Para mostrar la trazabilidad y la completitud de nuestros diagramas, armamos una tabla con los requerimientos y las presunciones del dominio aclarando para cada uno en que diagrama se ve reflejado. Luego en cada diagrama en particular se detalla cada requerimiento o presunción del dominio.
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+\hline
+\# & Requerimiento & Diagrama   \\ \hline
+1  & Reponer los productos en las góndolas & \\ \hline
+2  & Agregar depósitos al sistema & CU - MC \\ \hline
+3  & Los usuarios se pueden autentificar. & CU - DA \\ \hline
+4  & Que el cliente envié una copia del DNI mediante el sitio. & CU \\ \hline
+5  & Cerrar un pedido desde la pagina web & CU - MC - DA \\ \hline
+6  & Tomar productos del pedido => Notificar pedido armado. & CU - MC - DA \\ \hline
+7  & Configurar umbrales por producto en el sistema. & CU - MC \\ \hline
+8  & Incrementar stock cuando recibo reposición del proveedor. & CU - MC - FSM \\ \hline
+9  & Coordinar fecha de entrega. & CU - MC - DA \\ \hline
+10  & Se puede consultar los registros de las ventas.  & CU - MC \\ \hline
+11  & Se puede configurar los parámetros del reporte. & CU - MC \\ \hline
+12  & Mantener listado de productos comprados. &  MC \\ \hline
+13  & Mantener información de los medios de pagos utilizados. & MC \\ \hline
+14  & Los locales puedan registrarse. & CU - MC  \\ \hline
+15  & Los locales pueden y ver y seleccionar los productos que desea recibir. & CU  - DA  \\ \hline
+16  & Los locales pueden modificar los pedidos no cerrados. & CU - MC  \\ \hline
+17  & Los clientes pueden y ver y seleccionar los productos que desean recibir. & CU  - FSM \\ \hline
+18  & Los clientes pueden modificar los pedido no cerrados. & CU - MC  \\ \hline
+19 & Un cliente pueda registrarse. & CU - MC  \\ \hline
+20  & Un cliente pueda seleccionar la fecha de entrega. & CU - MC - DA  \\ \hline
+21  & Un cliente pueda ingresar sus datos de contacto. & CU - MC  \\ \hline
+22  & Reservar stock. & CU - MC - FSM \\ \hline
+23  & Los productos en falta son filtrado del listado que ve el cliente. & CU  - FSM \\ \hline
+24  & {\scriptsize La cantidad máxima permitida para pedir un producto es igual a la que hay en el deposito}. & CU  - FSM \\ \hline
+25  &  {\scriptsize Lograr que la interfase funcione correctamente en computadoras de escritorio} &  \\ \hline
+26  & Lograr que la interfase funcione correctamente en dispositivos móviles &  \\ \hline
+27  & Entregar pedidos al local & DA \\ \hline
+28  & Consultar pedidos armados & CU - MC  \\ \hline
+29  & Seleccionar pedido entregado & CU - MC - DA  \\ \hline
+30  & El cliente pago en contraentrega => se notifica pago a contraentrega. & CU - MC - DA  \\ \hline
+31  & El cliente pago desde la pagina => se notifica el pago online. & CU - MC - DA \\ \hline
+32  & Coordinar fecha de entrega con proveedor. & CU - DA  \\ \hline
+33  & Proveedor envía producto & FSM \\ \hline
+34  &  {\scriptsize Llevar el conteo en base a los pedidos realizados de cuantos productos quedan.} & CU - MC  - FSM \\ \hline
+35  &  {\scriptsize Se disparan alarmas cuando la cantidad de productos cae debajo del umbral configurado}  & FSM \\ \hline
+36 & Contactar al proveedor. & FSM \\ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{|l|l|l|}
+37  &  {\scriptsize Poder definir si un cliente es malo en función de un porcentaje de pedidos no entregados.} &  \\ \hline
+38  & Mantener historial de pedidos entregados y no entregados de un cliente.  & MC \\ \hline
+39  & Incrementar el precio del próximo pedido. &  \\ \hline
+40  & Rechazar pedido durante un tiempo & MC - FSM \\ \hline
+41  & Pedido llega a la casa del cliente & MC - FSM \\ \hline
+42  & Cliente pague el pedido & CU - MC  \\ \hline
+43  & Ofrecer pago con PayPal & CU - MC - DA \\ \hline
+44  & Ofrecer pago con crédito & CU - MC - DA \\ \hline
+45  & Ofrecer pago con débito & CU - MC - DA  \\ \hline
+46  & Ofrecer pago con efectivo.  & CU - MC - DA  \\ \hline
+\end{tabular}
+\end{table}
+\end{center}
+
+\textit{CU}: Diagrama de casos de uso.
+
+\textit{MC}: Diagrama de clases - Modelo conceptual.
+
+\textit{FSM}: Maquina de estados.
+
+\textit{DA}: Diagrama de actividad.
+
+\newpage

@@ -1,0 +1,96 @@
+\documentclass{beamer}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage[T1]{fontenc} 
+\usepackage{calligra} 
+\usetikzlibrary{arrows,automata}
+
+
+
+\input{Helpers.tex}
+%\usetheme{Berkeley}
+% \usetheme{JuanLesPins}
+% \usetheme{bars}
+% \usetheme{split}
+  \usetheme[compress]{Ilmenau}
+% \mode<presentation>
+%\mode<handout>%{\beamertemplatesolidbackgroundcolor{black!5}}
+% \mode<article>{\usepackage{fullpage}}
+% \usepackage{pgfpages}
+%\pgfpagelayout{resize}[a4paper,border shrink=5mm,landscape]
+
+\include{epsfig}
+\title{Supermercado D\'ia\%}
+
+\author{Christian Russo y compañía}
+\date{15 de Junio de 2015}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\frame{\tableofcontents}
+
+\section{Dificultades encontradas}
+
+\frame{
+\frametitle{Dificultades encontradas} 
+	\begin{itemize}
+		\item No sabíamos cómo hacer la trazabilidad.
+		\item No sabíamos que debíamos modelar con FSM y que con DA.
+		\item La sincronizaci\'on de alarmas de falta de stock para los pedidos.
+		\item Distinguir entre el rol de un local y el rol de un cliente (operaciones que pueden realizar, informaci\'on que se sabe de ambos para un pedido, etc.).
+		\item C\'omo modelar los reportes de ventas.
+		\item Asignar las responsabilidades de cada operaci\'on.
+		\item Decidir cu\'ales agentes tendr\'an una cuenta para interactuar con el sistema.
+	\end{itemize}
+}
+
+\section{Puntos fuertes del TP}
+
+\frame{
+\frametitle{Puntos fuertes del TP}
+	\begin{itemize}
+		\item La página web permite a los clientes realizar pedidos en forma simultánea.
+		%\item Se puede configurar parámetros para el registro de ventas.
+		\item Se puede configurar un umbral por producto para que se dispare una alarma que notifique al encargado de stock cuando el stock del mismo caiga por debajo de \'este.
+		\item Los usuarios pueden ver el estado de su pedido en la p\'agina en todo momento.
+		\item El sistema de penalizaci\'on de usuarios.
+	\end{itemize}
+}
+
+ 
+\section{Puntos cuestionables del TP}
+\frame{
+\frametitle{Puntos cuestionables del TP}
+	\begin{itemize}
+	\item No adoptamos ninguna estrategia que aumente la probabilidad de que el usuario permanezca en su domicilio para recibir el pedido. Las alternativas que consideramos fueron: enviarle un SMS antes de que su pedido salga del depósito a modo de recordatorio y enviarle un SMS si su pedido se encontrara demorado con la nueva hora de llegada para que lo espere.
+	\item No existe ninguna interacción entre los diferentes depósitos.
+	\item El stock reservado por los pedidos puede superar al stock real del depósito. Esto podría traer dificultades para cumplir con la fecha de entrega pactada con el cliente.
+	\end{itemize}
+}
+
+\section{Decisiones tomadas}
+\frame{
+\frametitle{Decisiones tomadas}
+	\begin{itemize}
+	\item Todos los locales tienen un dep\'osito asociado, éste maneja el stock de su correspondiente local.
+	\item Cuando un cliente no est\'a en su domicilio, el sistema lo penaliza impidi\'endole realizar nuevos pedidos durante un per\'iodo de tiempo configurable.
+	\item Los pedidos son asignados a un \'unico dep\'osito para procesarlos.
+	\end{itemize}
+}
+
+
+\frame{
+\frametitle{Fin}
+	\begin{center}
+	\huge{\textbf{?`Preguntas?}}
+	\includegraphics[width=0.5\textwidth]{preguntas.png}
+	\end{center}
+}
+
+
+
+
+\end{document}
